@@ -1,5 +1,5 @@
 
-
+from decimal import *
 import pandas as pd
 import copy
 
@@ -36,7 +36,7 @@ class ChipDistribution():
     def calcuSin(self,dateT,highT, lowT,avgT, volT,TurnoverRateT,minD,A):
         x =[]
 
-        l = (highT - lowT) / minD
+        l = (Decimal(str(highT)) - Decimal(str(lowT))) / Decimal(str(minD))
         for i in range(int(l)):
             x.append(round(lowT + i * minD, 2))
 
@@ -77,6 +77,7 @@ class ChipDistribution():
                 self.Chip[i] = tmpChip[i] *(TurnoverRateT * A)
         import copy
         self.ChipList[dateT] = copy.deepcopy(self.Chip)
+        # print(self.Chip)
 
 
     def calcu(self,dateT,highT, lowT,avgT, volT, TurnoverRateT,minD = 0.01, flag=1 , AC=1):
@@ -214,4 +215,4 @@ if __name__ == "__main__":
 
 
 
-    a.lwinner()
+    # a.lwinner()
